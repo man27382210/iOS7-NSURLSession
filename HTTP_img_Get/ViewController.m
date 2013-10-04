@@ -121,12 +121,13 @@
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (appDelegate.backgroundSessionCompletionHandler) {
+    if (appDelegate.backgroundSessionCompletionHandler)
+    {
         void (^completionHandler)() = appDelegate.backgroundSessionCompletionHandler;
         appDelegate.backgroundSessionCompletionHandler = nil;
         completionHandler();
     }
-    
+
     NSLog(@"All tasks are finished");
 }
 -(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes
